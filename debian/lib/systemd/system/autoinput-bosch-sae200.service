@@ -1,0 +1,11 @@
+# cat /lib/systemd/system/autoinput.service
+# if hand-installed systemd service then go to etc
+# cat /etc/systemd/system/autoinput.service
+[Unit]
+Description=Autoinput BOSCH SAE200 analytical balance
+After=remote-fs.target
+#After=syslog.target
+# syslog target is obsolete
+
+[Service]
+ExecStart=/usr/share/autoinput/balance-bosch-sae200.sh

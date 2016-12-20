@@ -1,0 +1,18 @@
+make mettler-toledo server
+check setting of time to GMT (UTC)
+and if it's off more than 3 seconds then
+set time correctly
+[ ] reconnect tcp socket if it gets disconnected
+    --- if it disconnects will result in error in expect statement
+[x] needs backgroud, use fileevent
+[ ] store results in the database
+[x] mail calibration report (spawn rmail)
+[ ] accept socket communication to remotely
+    trigger aclibration
+[ ] watchdog C0 responds with "EL"
+    this means that balance is probably turned off
+    periodically check the balance state and set
+    parameters
+[x] trap signal events
+[ ] every 1 minute, send  ST 1 
+    to refresh balance send result on keypress

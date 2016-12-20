@@ -1,0 +1,10 @@
+./mt.tcl 
+query: PWR 1
+power on
+command: I4
+Balance serial no: "1126162373"
+query: SNR
+Stable weight: 240.0 g
+Stable weight: 0.0 g
+Stable weight: 240.0 g
+Stable weight: 0.0 g

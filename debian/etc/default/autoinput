@@ -1,0 +1,56 @@
+# device bt MAC address of serial line device path
+device="00:02:72:47:4E:14"
+
+# persistenty attempt to connect to device
+persist=0
+
+# To beep after each value, PC speaker can be used.
+# (pc speaker is really an output-only device, but it is
+# supported by kernel driver in "linux input layer device")
+# It features sound output and no input.
+#pcspeaker="/dev/input/pc_speaker"
+
+# for values >= 0 add prefix '+'
+#plus=1
+
+# add leading zeros, like 00000.0
+#zero=1
+
+# delay between keypress actions in microseconds
+#key_delay=2000
+
+# Choose type of keys layout that mitutoyo will generate:
+# "num" for numeric pad or
+# "key" for keypad
+#key_layout="num"
+key_layout="key"
+
+# to further and more precisely accommodate to each
+# perticual keyboard and application, we can assign 
+# complex key sequences.
+# key sequence is a comma separated list of
+# key names, It can be key name e.g. MINUS. It means
+# press MINUS and release MINUS. 
+# Keys are named mostly as they appear on US keyboard.
+# Each Key can be prefixed with optional + or - sign 
+# to specify is the key pressed down (+) or released (-).
+# This is used whern some keys should be held down pressed 
+# while other keys are typed.
+# e.g. plus sign on US keyboad is obtained by
+# shift-equal which can be written here as:
+# key_plus="+LEFTSHIFT,EQUAL,-LEFTSHIFT"
+
+# key sequence before the value
+#key_before=""
+
+# key sequence for plus sign
+#key_plus="KPPLUS"
+
+# key sequence for plus sign
+#key_minus="KPMINUS"
+
+# key sequence for decimal point
+#key_point="KPDOT"
+
+# key sequence to after the value
+#key_after="DOWN"

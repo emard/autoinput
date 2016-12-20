@@ -1,0 +1,11 @@
+# cat /lib/systemd/system/caliper.service
+# if hand-installed systemd service then go to etc
+# cat /etc/systemd/system/caliper.service
+[Unit]
+Description=Autoinput Mettler-Toledo MS1602S 1.6kg balance
+After=remote-fs.target
+#After=syslog.target
+# syslog target is obsolete
+
+[Service]
+ExecStart=/usr/share/autoinput/balance-mettlertoledo-ms1602s.sh

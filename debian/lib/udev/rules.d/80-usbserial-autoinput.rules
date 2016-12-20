@@ -1,0 +1,27 @@
+
+#SUBSYSTEM=="tty", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", ATTRS{product}=="USB-Serial Controller", \
+#  SYMLINK+="ttyUSB.Mitutoyo", ENV{SYSTEMD_WANTS}="autoinput-mitutoyo.service"
+
+# calipers Mitutoyo all types
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="FTHB56BB", \
+  SYMLINK+="ttyUSB.Mitutoyo", ENV{SYSTEMD_WANTS}="autoinput-mitutoyo.service"
+
+# calipers Mitutoyo all types
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="FTHBVVMS", \
+  SYMLINK+="ttyUSB.Mitutoyo", ENV{SYSTEMD_WANTS}="autoinput-mitutoyo.service"
+
+# analytical scale BOSCH (alias Denver/Sartorious) 210g
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="FTHBVVPP", \
+  SYMLINK+="ttyUSB.BOSCH-SAE200", ENV{SYSTEMD_WANTS}="autoinput-bosch-sae200.service"
+
+# balance kern 6.1kg (asphalt lab)
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="FTAJM2T3", \
+  SYMLINK+="ttyUSB.KERN-770GJ", ENV{SYSTEMD_WANTS}="autoinput-kern-770gj.service"
+
+# balance mettler-toledo 1.6kg
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="FTHBUF2Z", \
+  SYMLINK+="ttyUSB.METTLER-TOLEDO-MS1602S", ENV{SYSTEMD_WANTS}="autoinput-mettlertoledo-ms1602s.service"
+
+# balance mettler-toledo 32kg
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="FTHBVMDN", \
+  SYMLINK+="ttyUSB.METTLER-TOLEDO-SG32001", ENV{SYSTEMD_WANTS}="autoinput-mettlertoledo-sg32001.service"

@@ -1,0 +1,64 @@
+#!/bin/sh
+#
+
+[ -f /etc/default/caliper ] && . /etc/default/caliper
+
+[ "${device}" ]       &&   DEVICE="--device=${device}"
+[ "${plus}" ]         &&   PLUS="--plus"
+[ "${zero}" ]         &&   ZERO="--zero"
+[ "${key_delay}" ]    &&   KEY_DELAY="--key-delay=${key_delay}"
+[ "${key_layout}" ]   &&   KEY_LAYOUT="--key-layout=${key_layout}"
+[ "${key_before}" ]   &&   KEY_BEFORE="--key-before=${key_before}"
+[ "${key_point}" ]    &&   KEY_POINT="--key-point=${key_point}"
+[ "${key_plus}" ]     &&   KEY_PLUS="--key-plus=${key_plus}"
+[ "${key_minus}" ]    &&   KEY_MINUS="--key-minus=${key_minus}"
+[ "${key_after}" ]    &&   KEY_AFTER="--key-after=${key_after}"
+[ "${key_off}" ]      &&   KEY_OFF="--key-off=${key_off}"
+[ "${pcspeaker}" ]    &&   PCSPEAKER="--pcspeaker=${pcspeaker}"
+[ "${persist}" ]      &&   PERSIST="--persist"
+[ "${verbose}" ]      &&   VERBOSE="--verbose"
+
+PIDFILE=/var/run/caliper.pid
+MITUTOYO=/usr/bin/caliper
+DAEMON_OPTS="${DEVICE} ${PLUS} ${ZERO} ${KEY_DELAY} ${KEY_LAYOUT} ${KEY_BEFORE} ${KEY_POINT} ${KEY_PLUS} ${KEY_MINUS} ${KEY_AFTER} ${KEY_OFF} ${PCSPEAKER} ${PERSIST} ${VERBOSE}"
+
+do_start()
+{
+	start-stop-daemon --start --background --oknodo --quiet --pidfile ${PIDFILE} \
+	--make-pidfile --exec ${MITUTOYO} -- $DAEMON_OPTS
+}
+
+do_stop()
+{
+	start-stop-daemon --stop --oknodo --quiet --pidfile ${PIDFILE} \
+	--make-pidfile --exec ${MITUTOYO}
+}
+
+case "$1" in
+    ## Start Mitutoyo caliper daemon
+    'start')
+    	echo -n "Starting $0"
+        do_start
+        echo "."
+        ;;
+
+    ## Stop Mitutoyo caliper daemon
+    'stop')
+    	echo -n "Stopping $0"
+        do_stop
+        echo "."
+        ;;
+
+    ## Restart Mitutoyo caliper daemon
+    'restart'|'force-reload')
+        do_stop
+        do_start
+        ;;
+
+    ## Print usage
+    *)
+        msg "Usage: $0 { start | stop | restart | force-reload }"
+        exit 2
+
+esac
+exit 0

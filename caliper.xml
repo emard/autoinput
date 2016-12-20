@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<caliper>
+
+  <!-- start thread that connects to a slave caliper device -->
+  <connect
+      device="00:AA:00:00:00:01"
+      persist="1"
+      protocol="mitutoyo"
+      plus="0"
+      zero="0"
+      />
+
+  <connect
+      device="00:AA:00:00:00:02"
+      persist="1"
+      protocol="mitutoyo"
+      plus="0"
+      zero="0"
+      />
+
+  <io
+      pcspeaker="/dev/input/pc_speaker"
+      key-delay="2000"
+      key-layout="num"
+      key-before=""
+      key-point="KPDOT"
+      key-plus="KPPLUS"
+      key-minus="KPMINUS"
+      key-after="DOWN"
+      key-off="ENTER"
+      />
+
+</caliper>

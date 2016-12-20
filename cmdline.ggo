@@ -1,0 +1,33 @@
+# file cmdline.ggo (gengetopt source)
+
+# Name of your program
+package "autoinput"       # don't use package if you're using automake
+# Version of your program
+version "0.9.9"         # don't use version if you're using automake
+
+purpose "uinput wrapper for Mitutoyo Caliper RS232C interface"
+
+#       long         short    description              type   default              required
+option  "device"     d "Serial device or bluetooth MAC or 'udp'"  string default="udp" no
+option  "protocol"   - "Serial data protocol [simple|mitutoyo|denver]" string default="simple"   no
+option  "debounce"   - "Serial data debounce interval usec" int default="2000000"  no
+option  "bps"        b "Serial speed in bps"           int    default="9600"       no
+option  "parity"     - "Serial parity [none|even|odd]" string default="none"       no
+option  "stopbits"   - "Serial number of stop bits"    int    default="1"          no
+option  "verbose"    v "Print activity"                                            no
+option  "plus"       - "Leading plus sign"                                         no
+option  "zero"       - "Leading zeroes"                                            no
+option  "key-delay"  - "Delay in us between keys"      int    default="2000"       no
+option  "key-layout" k "Key pad layout [key|num]"      string default="num"        no
+option  "key-before" - "Keys before data"              string default=""           no
+option  "key-point"  - "Keys for decimal point"        string default="KPDOT"      no
+option  "key-plus"   - "Keys for plus"                 string default="KPPLUS"     no
+option  "key-minus"  - "Keys for minus"                string default="KPMINUS"    no
+option  "key-after"  - "Keys after data"               string default="DOWN"       no
+option  "key-off"    - "Keys when caliper is off"      string default="ENTER"      no
+#option  "uinput"    - "uinput device"       string default="/dev/input/uinput"    no
+option  "pcspeaker"  s "PC Speaker inputdev or shell command" string default="/dev/input/by-path/platform-pcspkr-event-spkr"  no
+#option  "role"      - "Bluetooth role [master|slave]" string default="master"     no
+option  "persist"    p "Persistently keep connecting to slave"                     no
+#option  "fork"      f "Fork to background"                                        no
+#option  "config"    - "Use config file" string default="/etc/mitutoyo.conf"       no

@@ -1,0 +1,19 @@
+Package: autoinput
+Version: VERSION
+Section: science
+Priority: optional
+Architecture: ARCHITECTURE
+Depends: libc6 (>= 2.3.5-13), libbluetooth3 (>= 2.25-1), liblockdev1 (>= 1.0.2-1)
+Recommends: beep, alsa-utils, sound-icons
+Maintainer: Davor Emard <davoremard@gmail.com>
+Description: Converts serial data into keystrokes
+ This daemon can serve multiple calipers, balances etc. 
+ Works for caliper conncted to standard
+ serial port (ttyS*), USB converter serial port (ttyUSB*), bluetooth 
+ serial port (rfcomm*) or directly connect to bluetooth slave device
+ that provides a serial port on channel 1. Slave device is specified by 
+ its bluetooth MAC address. It will receive measurement
+ data each time DATA switch is pressed on caliper or PRINT key on the
+ balance and it will convert those data into keystrokes. 
+ Keystrokes are completely configurable as
+ complex streams of key down and key up events using uinput layer.

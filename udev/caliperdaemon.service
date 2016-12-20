@@ -1,0 +1,10 @@
+# cat /lib/systemd/system/caliperdaemon.service
+# if hand-installed systemd service then go to etc
+# cat /etc/systemd/system/caliperdaemon.service
+[Unit]
+Description=USB serial caliper daemon
+After=remote-fs.target
+After=syslog.target
+
+[Service]
+ExecStart=/usr/local/bin/caliper.sh

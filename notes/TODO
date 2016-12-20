@@ -1,0 +1,31 @@
+[ ] choose rfcomm channel
+[ ] choose caliper name in uinput system
+    (copy bluetooth device name if there's some)
+[ ] serve several calipers (possibly for each different keyboards)
+[ ] register caliper in uinput only when there is connection, and
+    remove it when there's no connection
+
+[x] keypress list "+SHIFT +EQUAL -EQUAL -SHIFT"
+[ ] exit input handler thread if device disconnected
+[ ] support constantly keep connecting
+[x] thread for slow output
+[x] delay of output keypresses
+[ ] config file mapping - character to keyboard event
+[ ] command line device name and ID's
+[x] command line serial parameters (9600N1)
+[x] command line serial device name
+[x] command line pc_speaker device name
+[x] gnu command line parser
+[x] ftdi serial id's, different units on the udev
+[ ] udp server start at init.d
+[x] bosch and sartorious is alias for denver
+[x] protocol for mettlertoledo
+    9600,7e1
+    every 60 seconds set ST 1
+    await for S S    1234.5 g
+[x] when using mettlertoledo with simple protocol
+    - sign is not sent (negative weight) sent as positive
+[ ] when using mettlertoledo with mettlertoledo protocol
+    - value is not sent (nothing happens)
+[ ] make beep when keypress is accepted after timeout
+[ ] debounce interval of 1 second is actualy 0 second

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ -x "/etc/init.d/caliper" ]; then
+        update-rc.d caliper defaults 30 70 >/dev/null
+        if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
+                invoke-rc.d caliper start || exit 0
+        else
+                /etc/init.d/caliper start || exit 0
+        fi
+fi

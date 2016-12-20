@@ -1,0 +1,11 @@
+# cat /lib/systemd/system/caliper.service
+# if hand-installed systemd service then go to etc
+# cat /etc/systemd/system/caliper.service
+[Unit]
+Description=Autoinput Mitutoyo caliper (all types)
+After=remote-fs.target
+#After=syslog.target
+# syslog target is obsolete
+
+[Service]
+ExecStart=/usr/share/autoinput/caliper-mitutoyo.sh

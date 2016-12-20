@@ -1,0 +1,7 @@
+ver 0.8.4:
+	Add debian support
+	Remove hid and usb dependency
+
+ver 0.8.3:
+	cmdline parameters changes
+	persist option for infinte reconnecting loop
