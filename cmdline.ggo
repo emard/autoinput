@@ -9,7 +9,7 @@ purpose "uinput wrapper for Mitutoyo Caliper RS232C interface"
 
 #       long         short    description              type   default              required
 option  "device"     d "Serial device or bluetooth MAC or 'udp'"  string default="udp" no
-option  "protocol"   - "Serial data protocol [simple|mitutoyo|denver]" string default="simple"   no
+option  "protocol"   - "Serial data protocol [simple|mitutoyo|denver|radwag|mettlertoledo]" string default="simple"   no
 option  "debounce"   - "Serial data debounce interval usec" int default="2000000"  no
 option  "bps"        b "Serial speed in bps"           int    default="9600"       no
 option  "parity"     - "Serial parity [none|even|odd]" string default="none"       no

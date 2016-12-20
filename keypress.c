@@ -831,6 +831,143 @@ int key_convert_simple(struct caliper *device, char input, struct input_event *e
   return complete;
 }
 
+int key_convert_radwag(struct caliper *device, char input, struct input_event *event)
+{
+  int output = 0, complete = 0;
+  event->type = EV_KEY;
+  event->value = 1;
+
+  switch(device->state)
+  {
+  case STATE_IDLE:
+  case STATE_IDLE60S:
+  case STATE_1OFF:
+  case STATE_2OFF:
+  case STATE_ADDR:
+  case STATE_SENDING:
+  case STATE_STABLE:
+  case STATE_B4SIGN:
+    switch(input)
+    {
+    case '-':
+      output = 1;
+    case '+':
+    case ' ':
+      device->state = STATE_VALUE;
+      printf("*** ENTER STATE_VALUE\n");
+      if(device->suppress_zero)
+      {
+        device->state = STATE_ZERO;
+        device->cancel_zero = 4;
+      }
+      clearchar(device);
+      if(device->suppress_plus <= 0)
+        output = 1;
+      if(output)
+        addchar(device, input);
+      break;
+    case '0':
+    case '1':
+    case '2':
+    case '3':
+    case '4':
+    case '5':
+    case '6':
+    case '7':
+    case '8':
+    case '9':
+    case '.':
+      addchar(device, input);
+      device->state = STATE_VALUE;
+      output = 1;
+      break;
+    default:
+      device->state = STATE_IDLE;
+      break;
+    }
+    break;
+  case STATE_ZERO:
+    switch(input)
+    {
+    case ' ':
+      /* zero supporession */
+      if(--device->cancel_zero <= 0)
+        device->state = STATE_VALUE;
+      break;
+    case '-':
+    case '0':
+    case '1':
+    case '2':
+    case '3':
+    case '4':
+    case '5':
+    case '6':
+    case '7':
+    case '8':
+    case '9':
+    case '.':
+      addchar(device, input);
+      device->state = STATE_VALUE;
+      output = 1;
+      break;
+    case '[':
+    case ']':
+    case 'g':
+    case '\r':
+    case '\n':
+    case '\0':
+      addchar(device, '\0');
+      device->state = STATE_IDLE;
+      output = 1;
+      complete = 1;
+      // beep(device, 1);
+      break;
+    default:
+      device->state = STATE_IDLE;
+      break;
+    }
+    break;
+  case STATE_VALUE:
+    switch(input)
+    {
+    case '-':
+    case '0':
+    case '1':
+    case '2':
+    case '3':
+    case '4':
+    case '5':
+    case '6':
+    case '7':
+    case '8':
+    case '9':
+    case '.':
+      addchar(device, input);
+      output = 1;
+      break;
+    case ' ':
+    case '[':
+    case ']':
+    case 'g':
+      break;
+    case '\r':
+    case '\n':
+    case '\0':
+      addchar(device, '\0');
+      device->state = STATE_IDLE;
+      complete = 1;
+      output = 1;
+      // beep(device, 1);
+      break;
+    default:
+      device->state = STATE_IDLE;
+      break;
+    }
+    break;
+  }
+  return complete;
+}
+
 int key_convert(struct caliper *device, char input, struct input_event *event)
 {
   switch(device->protocol)
@@ -841,6 +978,8 @@ int key_convert(struct caliper *device, char input, struct input_event *event)
       return key_convert_denver(device, input, event);
     case PROTOCOL_METTLERTOLEDO:
       return key_convert_mettlertoledo(device, input, event);
+    case PROTOCOL_RADWAG:
+      return key_convert_radwag(device, input, event);
     case PROTOCOL_SIMPLE:
       return key_convert_simple(device, input, event);
   }

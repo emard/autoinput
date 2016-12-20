@@ -702,6 +702,8 @@ int main(int argc, char *argv[])
       device->protocol = PROTOCOL_METTLERTOLEDO;
     if(strcasecmp("mettler-toledo", args->protocol_arg) == 0)
       device->protocol = PROTOCOL_METTLERTOLEDO;
+    if(strcasecmp("radwag", args->protocol_arg) == 0)
+      device->protocol = PROTOCOL_RADWAG;
     if(strcasecmp("simple", args->protocol_arg) == 0)
       device->protocol = PROTOCOL_SIMPLE;
   }
