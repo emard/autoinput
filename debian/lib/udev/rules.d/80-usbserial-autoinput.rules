@@ -11,8 +11,12 @@ SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{seria
   SYMLINK+="ttyUSB.Mitutoyo", ENV{SYSTEMD_WANTS}="autoinput-mitutoyo.service"
 
 # analytical scale BOSCH (alias Denver/Sartorious) 210g
+#SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="FTHBVVPP", \
+#  SYMLINK+="ttyUSB.BOSCH-SAE200", ENV{SYSTEMD_WANTS}="autoinput-bosch-sae200.service"
+
+# analytical scale RADWAG AS220.R2 220g
 SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="FTHBVVPP", \
-  SYMLINK+="ttyUSB.BOSCH-SAE200", ENV{SYSTEMD_WANTS}="autoinput-bosch-sae200.service"
+  SYMLINK+="ttyUSB.RADWAG-AS220R2", ENV{SYSTEMD_WANTS}="autoinput-radwag-as220r2.service"
 
 # balance kern 6.1kg (asphalt lab)
 SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="FTAJM2T3", \
