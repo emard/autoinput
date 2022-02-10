@@ -1,7 +1,7 @@
 project=autoinput
 parser=cmdline
 version=$(shell ./version.sh)
-debrelease=18
+debrelease=19
 #architecture=i386
 #architecture=amd64
 architecture=$(shell dpkg-architecture -qDEB_BUILD_ARCH)
@@ -39,7 +39,7 @@ $(config).o: $(config).c
 	gcc ${xml2cflags} -c $(config).c
 
 $(config)_test: $(config).o
-	gcc $(xml2libs) $(config).o -o $@
+	gcc $(config).o $(xml2libs) -o $@
 
 $(keypress).o: $(keypress).c $(keypress).h
 	gcc $(CFLAGS) -c $(keypress).c
@@ -54,7 +54,7 @@ $(project).o: $(project).c $(includes)
 	gcc $(CFLAGS) -c $(project).c
 
 $(project): $(objects)
-	gcc $(CFLAGS) $(CLIBS) $(objects) -o $@
+	gcc $(CFLAGS) $(objects) $(CLIBS) -o $@
 
 $(debianproject): $(project)
 	strip $< -o $@
