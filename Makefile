@@ -1,7 +1,7 @@
 project=autoinput
 parser=cmdline
 version=$(shell ./version.sh)
-debrelease=19
+debrelease=20
 #architecture=i386
 #architecture=amd64
 architecture=$(shell dpkg-architecture -qDEB_BUILD_ARCH)
