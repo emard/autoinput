@@ -93,11 +93,13 @@ int input_register_serial(struct caliper *device)
   }
 
   /* lock the originating serial line */
+  #if 0
   if(dev_lock(device->name))
   {
     perror("cannot get hold of the device lock");
     return -1;
   }
+  #endif
 
   /* device->hwfd = open(device->name, O_RDONLY | O_NOCTTY | O_SYNC); */
   device->hwfd = open(device->name, O_RDWR | O_NOCTTY | O_SYNC);
@@ -422,8 +424,10 @@ int input_unregister(struct caliper *device)
   /* source de-initialization */
   close(device->hwfd);
 
+  #if 0
   /* release our device lock */
   dev_unlock(device->name, getpid());
+  #endif
 
   return 0;
 }

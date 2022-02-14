@@ -9,7 +9,7 @@ config=xmlconfig
 
 package=$(project)_$(version)-$(debrelease)_$(architecture).deb
 
-CLIBS=-llockdev -lpthread -lbluetooth # -lhid
+CLIBS=-lpthread -lbluetooth # -lhid
 CFLAGS=-Wall -g
 
 debianproject=debian/usr/bin/$(project)

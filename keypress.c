@@ -331,7 +331,7 @@ int key_convert_mitutoyo(struct caliper *device, char input, struct input_event 
     switch(input)
     {
     case '0':
-      /* zero supporession */
+      /* zero suppression */
       if(--device->cancel_zero <= 0)
         device->state = STATE_VALUE;
       break;

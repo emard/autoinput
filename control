@@ -3,7 +3,7 @@ Version: VERSION
 Section: science
 Priority: optional
 Architecture: ARCHITECTURE
-Depends: libc6 (>= 2.3.5-13), libbluetooth3 (>= 2.25-1), liblockdev1 (>= 1.0.2-1)
+Depends: libc6 (>= 2.3.5-13), libbluetooth3 (>= 2.25-1)
 Recommends: beep, alsa-utils, sound-icons
 Maintainer: Davor Emard <davoremard@gmail.com>
 Description: Converts serial data into keystrokes
