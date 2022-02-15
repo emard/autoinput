@@ -26,7 +26,7 @@
 #include <malloc.h>
 // #include <hid.h>
 #include <termios.h> /* POSIX terminal control definitions */
-#include <lockdev.h> /* serial line locking */
+//#include <lockdev.h> /* serial line locking */
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/rfcomm.h>
 
@@ -473,12 +473,14 @@ void *input_handler_serial(void *data)
       case STATE_IDLE:
         retval = read(fd, input, 1); /* read char-by-char serial, infinite idle time */
         break;
+      #if 0
       case STATE_ADDR:
         // NOTE workarund for mettler-toledo exit on unknown data
         // idle scale repeatedly sends S TA but it results in no keypress
         // therefore we reset unknown data counter to prevent autoinput to exit
         unknown_data = 0;
         break;
+      #endif
       case STATE_IDLE60S:
         FD_ZERO(&rfds);
         FD_SET(fd, &rfds);
@@ -512,6 +514,11 @@ void *input_handler_serial(void *data)
         }
         break;
     }
+
+    /// HACK workaround for mettler-toledo sg32001
+    // cca every minute it sends "S TA\n\r"
+    if(input[0] == 'S')
+      unknown_data = 0;
 
     if(verbose)
     {

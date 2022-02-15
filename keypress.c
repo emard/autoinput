@@ -22,7 +22,7 @@
 #include <malloc.h>
 // #include <hid.h>
 #include <termios.h> /* POSIX terminal control definitions */
-#include <lockdev.h> /* serial line locking */
+//#include <lockdev.h> /* serial line locking */
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/rfcomm.h>
 
