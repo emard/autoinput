@@ -18,6 +18,10 @@ SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{seria
 SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="FTHBVVPP", \
   SYMLINK+="ttyUSB.RADWAG-AS220R2", ENV{SYSTEMD_WANTS}="autoinput-radwag-as220r2.service"
 
+# industrial scale RADWAG APP25.3Y 25kg
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="FTHBU8BL", \
+  SYMLINK+="ttyUSB.RADWAG-APP25.3Y", ENV{SYSTEMD_WANTS}="autoinput-radwag-app25-3y.service"
+
 # balance kern 6.1kg (asphalt lab)
 SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="FTAJM2T3", \
   SYMLINK+="ttyUSB.KERN-770GJ", ENV{SYSTEMD_WANTS}="autoinput-kern-770gj.service"
