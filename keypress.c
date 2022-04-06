@@ -852,7 +852,7 @@ int key_convert_radwag(struct caliper *device, char input, struct input_event *e
     case '-':
       output = 1;
     case '+':
-    case ' ':
+    // case ' ':
       device->state = STATE_VALUE;
       printf("*** ENTER STATE_VALUE\n");
       if(device->suppress_zero)
@@ -889,11 +889,13 @@ int key_convert_radwag(struct caliper *device, char input, struct input_event *e
   case STATE_ZERO:
     switch(input)
     {
+    #if 0
     case ' ':
       /* zero supporession */
       if(--device->cancel_zero <= 0)
         device->state = STATE_VALUE;
       break;
+    #endif
     case '-':
     case '0':
     case '1':
