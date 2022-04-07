@@ -1,0 +1,132 @@
+after some idle time autoinput exits
+on mettler toledo 32 kg scale
+(fixed)
+
+state=5
+input activity 0x0d
+state=5
+input activity 0x0a
+state=5
+input activity 0x00
+state=1
+input activity 'S'
+state=1
+input activity 'T'
+state=5
+input activity ' '
+state=5
+input activity 'A'
+state=5
+input activity 0x0d
+state=5
+input activity 0x0a
+state=5
+input activity 0x00
+state=1
+input activity 'S'
+state=1
+input activity 'T'
+state=5
+input activity ' '
+state=5
+input activity 'A'
+state=5
+input activity 0x0d
+state=5
+input activity 0x0a
+state=5
+input activity 0x00
+state=1
+input activity 'S'
+state=1
+input activity 'T'
+state=5
+input activity ' '
+state=5
+input activity 'A'
+state=5
+input activity 0x0d
+state=5
+input activity 0x0a
+state=5
+input activity 0x00
+state=1
+input activity 'S'
+state=1
+input activity 'T'
+state=5
+input activity ' '
+state=5
+input activity 'A'
+state=5
+input activity 0x0d
+state=5
+input activity 0x0a
+state=5
+input activity 0x00
+state=1
+input activity 'S'
+state=1
+input activity 'T'
+state=5
+input activity ' '
+state=5
+input activity 'A'
+state=5
+input activity 0x0d
+state=5
+input activity 0x0a
+state=5
+input activity 0x00
+state=1
+input activity 'S'
+state=1
+input activity 'T'
+state=5
+input activity ' '
+state=5
+input activity 'A'
+state=5
+input activity 0x0d
+state=5
+input activity 0x0a
+state=5
+input activity 0x00
+state=1
+input activity 'S'
+state=1
+input activity 'T'
+state=5
+input activity ' '
+state=5
+input activity 'A'
+state=5
+input activity 0x0d
+state=5
+input activity 0x0a
+state=5
+input activity 0x00
+state=1
+input activity 'S'
+state=1
+input activity 'T'
+state=5
+input activity ' '
+state=5
+input activity 'A'
+state=5
+input activity 0x0d
+state=5
+input activity 0x0a
+state=5
+input activity 0x00
+state=1
+input activity 'S'
+state=1
+input activity 'T'
+state=5
+input activity ' '
+state=5
+input activity 'A'
+state=5
+exit.
