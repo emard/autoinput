@@ -12,7 +12,8 @@ package=$(project)_$(version)-$(debrelease)_$(architecture).deb
 CLIBS=-lpthread -lbluetooth # -lhid
 CFLAGS=-Wall -g
 
-debianproject=debian/usr/bin/$(project)
+debianbin=debian/usr/bin
+debianproject=$(debianbin)/$(project)
 # debian parts that can be erased and rebuilt
 debianparts=$(debianproject) debian/DEBIAN/control debian/usr/share/doc/$(project)/changelog.gz
 xml2cflags=`xml2-config --cflags`
@@ -57,6 +58,7 @@ $(project): $(objects)
 	gcc $(CFLAGS) $(objects) $(CLIBS) -o $@
 
 $(debianproject): $(project)
+	mkdir -p $(debianbin)
 	strip $< -o $@
 	chmod og+rx $@
 
