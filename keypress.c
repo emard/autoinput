@@ -445,7 +445,7 @@ int key_convert_denver(struct caliper *device, char input, struct input_event *e
     switch(input)
     {
     case ' ':
-      /* zero supporession */
+      /* zero suppression */
       if(--device->cancel_zero <= 0)
         device->state = STATE_VALUE;
       break;
@@ -605,7 +605,7 @@ int key_convert_mettlertoledo(struct caliper *device, char input, struct input_e
       break;
     case '0':
       device->state = STATE_ZERO;
-      /* zero supporession */
+      /* zero suppression */
       if(--device->cancel_zero <= 0)
         device->state = STATE_VALUE;
       break;
@@ -632,7 +632,7 @@ int key_convert_mettlertoledo(struct caliper *device, char input, struct input_e
     switch(input)
     {
     case '0':
-      /* zero supporession */
+      /* zero suppression */
       if(--device->cancel_zero <= 0)
         device->state = STATE_VALUE;
       break;
@@ -757,7 +757,7 @@ int key_convert_simple(struct caliper *device, char input, struct input_event *e
     switch(input)
     {
     case ' ':
-      /* zero supporession */
+      /* zero suppression */
       if(--device->cancel_zero <= 0)
         device->state = STATE_VALUE;
       break;
@@ -891,7 +891,7 @@ int key_convert_radwag(struct caliper *device, char input, struct input_event *e
     {
     #if 1
     case ' ':
-      /* zero supporession */
+      /* zero suppression */
       if(--device->cancel_zero <= 0)
         device->state = STATE_VALUE;
       break;
