@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include <ctype.h> /* isalpha */
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -432,6 +433,40 @@ int input_unregister(struct caliper *device)
   return 0;
 }
 
+/* network IP UDP sender (unicast/broadcast/multicast)
+n is multiplicity - send several times same packet to improve reception
+*/
+void send_udp(char *address, int port, char *message, int n)
+{
+  struct sockaddr_in addr;
+  int fd;
+
+  if ((fd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0)
+  {
+      perror("socket");
+      exit(1);
+  }
+
+  int broadcastPermission = 1;          /* Socket opt to set permission to broadcast */
+  /* Set socket to allow broadcast */
+  if (setsockopt(fd, SOL_SOCKET, SO_BROADCAST, (void *) &broadcastPermission, sizeof(broadcastPermission)) < 0)
+      perror("setsockopt() failed");
+
+  /* set up destination address */
+  memset(&addr, 0, sizeof(addr));
+  addr.sin_family = AF_INET;
+  addr.sin_addr.s_addr = inet_addr(address);
+  addr.sin_port = htons(port);
+
+  for(int i = 0; i < n; i++)
+  if (sendto(fd, message, strlen(message), MSG_CONFIRM, (struct sockaddr *) &addr, sizeof(addr) ) < 0)
+  {
+    perror("sendto");
+    exit(1);
+  }
+  close(fd);
+}
+
 /* serial port and bluetooth input handler */
 void *input_handler_serial(void *data)
 {
@@ -558,7 +593,10 @@ void *input_handler_serial(void *data)
           printf("got: %s (%ld bytes)\n", device->sendvalue, strlen(device->sendvalue));
 
         if(device->sendvalue[0] != '\0')
+        {
           rc[THREAD_KEYPRESS] = pthread_create( &thread[THREAD_KEYPRESS], NULL, &keypress_handler, (void *) (device) );
+          send_udp(args->udp_addr_arg, args->udp_port_arg, device->sendvalue, args->udp_count_arg);
+        }
       }
     }
     else

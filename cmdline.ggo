@@ -3,7 +3,7 @@
 # Name of your program
 package "autoinput"       # don't use package if you're using automake
 # Version of your program
-version "1.0.5"         # don't use version if you're using automake
+version "1.0.6"         # don't use version if you're using automake
 
 purpose "uinput wrapper for Mitutoyo Caliper RS232C interface"
 
@@ -31,3 +31,6 @@ option  "pcspeaker"  s "PC Speaker inputdev or shell command" string default="/d
 option  "persist"    p "Persistently keep connecting to slave"                     no
 #option  "fork"      f "Fork to background"                                        no
 #option  "config"    - "Use config file" string default="/etc/mitutoyo.conf"       no
+option  "udp-addr"   - "Destination address"           string default="225.0.0.1"  no
+option  "udp-port"   - "Destination port"              int    default="32001"      no
+option  "udp-count"  - "Number of packets to send"     int    default="5"          no
