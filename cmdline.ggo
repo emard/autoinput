@@ -3,7 +3,7 @@
 # Name of your program
 package "autoinput"       # don't use package if you're using automake
 # Version of your program
-version "1.0.6"         # don't use version if you're using automake
+version "1.0.7"         # don't use version if you're using automake
 
 purpose "uinput wrapper for Mitutoyo Caliper RS232C interface"
 
