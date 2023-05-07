@@ -745,6 +745,8 @@ int main(int argc, char *argv[])
   device->protocol = PROTOCOL_SIMPLE;
   if(args->protocol_given)
   {
+    if(strcasecmp("mitutoyo", args->protocol_arg) == 0)
+      device->protocol = PROTOCOL_MITUTOYO;
     if(strcasecmp("denver", args->protocol_arg) == 0)
       device->protocol = PROTOCOL_DENVER;
     if(strcasecmp("bosch", args->protocol_arg) == 0)

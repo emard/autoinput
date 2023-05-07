@@ -216,13 +216,16 @@ int addchar(struct caliper *device, char input)
 ** variables in case we'll need them. currently it's
 ** unused
 ** this is state machine for mitutoyo caliper
+** should suppress reporting values 911 and 912
+** 911 happens when caliper is off
+** 912 happens sometimes on some caliper (150 mm)
 */
 int key_convert_mitutoyo(struct caliper *device, char input, struct input_event *event)
 {
   int output = 0, complete = 0;
   event->type = EV_KEY;
   event->value = 1;
-
+  //printf("state=%d\n", device->state);
   switch(device->state)
   {
   case STATE_IDLE:
@@ -261,14 +264,16 @@ int key_convert_mitutoyo(struct caliper *device, char input, struct input_event 
     switch(input)
     {
     case '1':
-      output = 1;
-      input = '?';
       device->state = STATE_IDLE;
+      #if 0
+      output = 1;
+      input = '0';
       // beep(device, 2); /* beep for not accepted value */
       clearchar(device);
       addchar(device, input);
       addchar(device, '\0');
       complete = 1;
+      #endif
       break;
     default:
       device->state = STATE_IDLE;
@@ -529,7 +534,7 @@ int key_convert_mettlertoledo(struct caliper *device, char input, struct input_e
   event->type = EV_KEY;
   event->value = 1;
   
-  printf("state=%d\n", device->state);
+  //printf("state=%d\n", device->state);
 
   switch(device->state)
   {
