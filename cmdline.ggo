@@ -5,7 +5,7 @@ package "autoinput"       # don't use package if you're using automake
 # Version of your program
 version "1.0.7"         # don't use version if you're using automake
 
-purpose "uinput wrapper for Mitutoyo Caliper RS232C interface"
+purpose "uinput wrapper for caliper or balance RS232C interface"
 
 #       long         short    description              type   default              required
 option  "device"     d "Serial device or bluetooth MAC or 'udp'"  string default="udp" no
